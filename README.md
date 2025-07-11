@@ -1,70 +1,94 @@
-Agentic AI Project — Assignment 2
-This project includes three mini agent-based systems built using OpenAI Agent SDK + Runner. Each system simulates real-world use cases by handing off between multiple AI agents and using custom tools.
+# Agentic AI Project — Assignment 2
 
-Overview of All 3 Agents
-1. Career Mentor Agent
-Helps students explore career paths by suggesting fields, showing skill roadmaps, and real-world job roles.
+This project includes **three multi-agent systems** built using the **OpenAI Agent SDK + Runner**.  
+Each system simulates a real-world task using **tool-based agents** and proper **handoff logic**.
 
-Agents:
+---
 
-CareerAgent – suggests career fields based on user interest.
+## Overview of All 3 Agents
 
-SkillAgent – provides a skill roadmap (beginner to advanced).
+---
 
-JobAgent – explains real-world job options related to the field.
+### Career Mentor Agent
 
-Tool Used: get_career_roadmap()
+Helps students explore careers by suggesting fields, skill roadmaps, and job roles.
 
-Handoff Logic:
+**Agents:**
+- `CareerAgent` – Suggests career fields based on interests.
+- `SkillAgent` – Provides a beginner-to-advanced skill roadmap.
+- `JobAgent` – Explains real-world job roles and job-hunting tips.
+
+**Tool Used:** `get_career_roadmap()`
+
+**Handoff Logic:**
 CareerAgent ➡ SkillAgent ➡ JobAgent
 
-2. AI Travel Designer Agent
-Plans a customized trip based on mood, interests, season, and region.
+markdown
+Copy
+Edit
 
-Agents:
+---
 
-DestinationAgent – recommends destinations.
+###  AI Travel Designer Agent
 
-BookingAgent – shows available flights.
+Designs personalized travel plans based on mood, interests, region, and season.
 
-ExploreAgent – suggests hotels, food & activities.
+**Agents:**
+- `DestinationAgent` – Recommends travel destinations.
+- `BookingAgent` – Suggests mock flights and hotel options.
+- `ExploreAgent` – Recommends food and local attractions.
 
-Tools Used: get_flights(), suggest_hotels()
+**Tools Used:**
+- `get_flights()`
+- `suggest_hotels()`
 
-Handoff Logic:
+**Handoff Logic:**
 DestinationAgent ➡ BookingAgent ➡ ExploreAgent
 
-3. Game Master Agent
-A fantasy role-play engine with interactive storytelling, battles, and rewards.
+---
 
-Agents:
+### Game Master Agent
 
-NarratorAgent – tells the story and sets scenes.
+Runs an interactive text-based adventure game with battles, loot, and a fantasy story.
 
-MonsterAgent – handles battle phases.
+**Agents:**
+- `NarratorAgent` – Drives the story and gives choices.
+- `MonsterAgent` – Manages combat using dice logic.
+- `ItemAgent` – Handles inventory and loot after events.
 
-ItemAgent – gives loot and inventory updates.
+**Tools Used:**
+- `roll_dice()`
+- `generate_event()`
 
-Tools Used: roll_dice(), generate_event()
+**Handoff Logic:**
+NarratorAgent ➡ MonsterAgent ➡ ItemAgent ➡ back to Narrator
 
-Handoff Logic:
-NarratorAgent ⤷ MonsterAgent ⤷ ItemAgent ⤴ back to Narrator
 
-How to Run
-Install uv and create virtual environment:
+---
 
+## How to Run
+
+### 1. Install `uv` and set up virtual environment:
+```bash
 uv venv
 uv venv activate
-Install packages:
-
+2. Install required packages:
+bash
+Copy
+Edit
 pip install openai-agents-sdk openai python-dotenv
-Add your OpenAI API key in .env:
+3. Add your OpenAI API key in .env:
+ini
+Copy
+Edit
+GEMINI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxx
+4. Run the app:
 
-GEMINI_API_KEY=xxxxxxxxxxxxxxxxxxxx
-Run the project:
-
-uv run uv chainlit main.py
+uv run
+uv chainlit run main.py
 Notes
-Each system uses at least 2 agents, 2 tools, and includes handoff logic, as required.
+Each project uses at least 2 agents, 2 tools, and proper handoff logic.
 
-Prompts, tool responses, and flow are customized to make the project unique.
+Prompts and flows are customized to make each system unique.
+
+Built for practice with multi-agent AI systems using OpenAI SDK.
